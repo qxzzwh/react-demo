@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello react</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            state = { opacity: 1 }
+            unmount = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test3'));
+            }
+            componentWillUnmount() {
+                clearInterval(this.timer);
+            }
+
+            componentDidMount() {
+                this.timer = setInterval(() => {
+                    let { opacity } = this.state;
+                    opacity -= 0.1;
+                    if (opacity <= 0) {
+                        opacity = 1
+                    };
+                    this.setState({ opacity });
+                }, 200)
+            }
+            render() {
+                return (
+                    <div>
+                        <h2 style={{ opacity: this.state.opacity }}>How about React?</h2>
+                        <button onClick={this.unmount}>DONE</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById('test3'));
+
+        // debugger;
+    </script>
+</body>
+
+</html>

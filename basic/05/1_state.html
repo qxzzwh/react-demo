@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello react</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script type="text/babel"></script>
+    <script type="text/babel">
+        // function Demo() {
+        //     return <h2>I am a function defined component</h2>
+        // }
+        class Demo extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { isHot: false, wind: "heavy" }
+                this.changeWeather = this.changeWeather.bind(this);
+            }
+            render() {
+                const { isHot, wind } = this.state;
+                return (<h2 key="weather" onClick={this.changeWeather}>Today the weather is {isHot ? "hot" : " cool"} and wind is {wind ? "heavy" : "peace"}</h2>);
+            }
+            changeWeather() {
+                const ishot = this.state.isHot;
+                this.setState({ isHot: !ishot });
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById('test'));
+        // debugger;
+    </script>
+</body>
+
+</html>

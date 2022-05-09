@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello react</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            showData = () => {
+                const { input1 } = this;
+                alert(input1.value);
+            }
+            showData2 = () => {
+                const { input2 } = this;
+                alert(input2.value);
+            }
+            saveInput = (c) => {
+                this.input2 = c;
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" ref={c => this.input1 = c} placeholder="click button to show data" />
+                        <button onClick={this.showData} >Click show left data</button>
+                        <input ref={this.saveInput} onBlur={this.showData2} type="text" placeholder="lose focue to show data" />
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById('test3'));
+
+        // debugger;
+    </script>
+</body>
+
+</html>

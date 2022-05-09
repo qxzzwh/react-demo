@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello react</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            handelSubmit = (e) => {
+                e.preventDefault();
+                const { um, pwd } = this;
+                alert(`Username ${um.value}, password ${pwd.value}`);
+            }
+            render() {
+                return (
+                    <form action="http://test.halali.xyz" method="get" onSubmit={this.handelSubmit}>
+                        User name:<input ref={c => this.um = c} type="text" name="username" />
+                        Password:<input ref={c => this.pwd = c} type="password" name="password" />
+                        <button>Log in</button>
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById('test3'));
+
+        // debugger;
+    </script>
+</body>
+
+</html>
