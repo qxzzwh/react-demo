@@ -1,0 +1,15 @@
+.todo-header {
+    border: 0px solid lightslategrey;
+    margin-left: 5px;
+}
+
+.todo-header input {
+    height: 28px;
+    font-size: 14px;
+}
+
+.todo-header input:focus {
+    outline: none;
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: inset 0 1px 1px rgb(0, 0, 0, 0.075), 0 0 8px rgb(82, 168, 236, 0.6);
+}

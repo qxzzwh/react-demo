@@ -1,0 +1,11 @@
+li {
+    overflow: hidden;
+}
+
+li button {
+    float: right;
+}
+
+li:before {
+    content: initial;
+}
